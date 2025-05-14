@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2023",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "strictBindCallApply": false,
+    "noFallthroughCasesInSwitch": false
+  }
+}
+
+// {
+//   "compilerOptions": {
+//     "module": "commonjs",                      // ✅ Required for Node.js compatibility (Nest uses this)
+//     "declaration": true,                       // ✅ Useful if you publish your code as a library, can be false otherwise
+//     "removeComments": true,                    // ✅ Optional for clean build output
+//     "emitDecoratorMetadata": true,             // ✅ Required by NestJS for dependency injection
+//     "experimentalDecorators": true,            // ✅ Required by NestJS
+//     "allowSyntheticDefaultImports": true,      // ✅ Useful for flexibility with module imports
+//     "target": "ES2023",                        // ✅ Fine; modern JS target, compatible with Node.js 18+
+//     "sourceMap": true,                         // ✅ Useful for debugging
+//     "outDir": "./dist",                        // ✅ Standard; compiled files go here
+//     "baseUrl": "./",                           // ✅ Enables path mapping
+//     "incremental": true,                       // ✅ Speeds up subsequent builds
+//     "skipLibCheck": true,                      // ✅ Faster builds; skips checking `.d.ts` files
+//     "strictNullChecks": true,                  // ✅ Good for catching null/undefined issues
+//     "forceConsistentCasingInFileNames": true,  // ✅ Prevents weird bugs on case-sensitive file systems
+//     "noImplicitAny": false,                    // 🔸 Optional: true makes you explicitly type everything, can catch more bugs
+//     "strictBindCallApply": false,              // 🔸 Fine to leave off unless doing heavy function binding
+//     "noFallthroughCasesInSwitch": false        // 🔸 Leave off unless you're doing complex switch logic
+//   }
+// }
