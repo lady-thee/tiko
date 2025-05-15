@@ -17,14 +17,27 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "migrate": "pnpx prisma migrate dev --schema=prisma/schema.prisma",
+    "generate": "prisma generate schema=prisma/schema.prisma",
+    "migrate:deploy": "prisma migrate deploy schema=prisma/schema.prisma",
+    "migrate:reset": "prisma migrate reset schema=prisma/schema.prisma",
+    "migrate:status": "prisma migrate status schema=prisma/schema.prisma",
+    "migrate:resolve": "prisma migrate resolve schema=prisma/schema.prisma",
+    "migrate:rollback": "prisma migrate rollback schema=prisma/schema.prisma",
+    "migrate:push": "prisma db push schema=prisma/schema.prisma"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
+    "@nestjs/swagger": "^11.2.0",
+    "@prisma/client": "^6.7.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",

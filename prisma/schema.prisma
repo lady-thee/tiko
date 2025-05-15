@@ -1,0 +1,88 @@
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+
+
+enum Roles {
+    SUPERADMIN
+    ADMIN
+    MANAGER
+    EMPLOYEE
+}
+
+
+
+model User {
+    id       String   @id @default(uuid())
+    role     Roles    @default(EMPLOYEE)
+    email    String   @unique 
+    activationCode String? @unique
+    activationCodeExpiry DateTime?
+    firstName String
+    lastName  String
+    username String   @unique
+    phone    String?   
+    password String?
+    occupation String?
+    country String?
+    city String?
+    address String?
+    isVerified Boolean @default(false)
+    isActive Boolean @default(true)
+    isDeleted Boolean @default(false)
+    isSuperAdmin Boolean @default(false)
+    isAdmin Boolean @default(false)
+    
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    companyId String?
+    company   Company? @relation(fields: [companyId], references: [id])
+    employee  Employee[]
+}
+
+model Company {
+    id      String   @id @default(uuid())
+    name     String   @unique
+    email    String   @unique
+    phone    String   @unique
+    address  String?
+    country  String?
+    city     String?
+    timezone String?
+    website  String?
+    logo     String?
+    numberOfEmployees Int?
+    industry String?
+    description String?
+    workingHoursPerWeek String?
+    currency String?
+    workingDays String?
+    workingHoursPerDay String?
+    workendingTime String?
+    inviteCode String? @unique
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    employees Employee[]
+    user     User[]
+}
+
+model Employee {
+    id       String   @id @default(uuid())
+    userId    String
+    companyId String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    user     User     @relation(fields: [userId], references: [id])
+    company  Company  @relation(fields: [companyId], references: [id])
+}
+
+
