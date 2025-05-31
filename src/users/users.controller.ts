@@ -13,14 +13,14 @@ export class UsersController {
     private readonly prisma: PrismaService,
   ) {}
 
-  @Post('/manager/create')
+  @Post('/create')
   @ApiOperation({
-    summary: 'Create a new manager',
-    description: 'Create a new manager with the provided details',
+    summary: 'Create a new user',
+    description: 'Create a new user with the provided details',
   })
   async createManagerController(
     @Body() createUserDto: CreateUserDto,
   ): Promise<ClientHTTPResponse> {
-    return this.usersService.createManager(createUserDto);
+    return this.usersService.createUser(createUserDto);
   }
 }

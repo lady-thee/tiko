@@ -12,6 +12,7 @@ generator client {
 enum Roles {
     SUPERADMIN
     ADMIN
+    SOLO
     MANAGER
     EMPLOYEE
 }
@@ -45,6 +46,8 @@ model User {
     companyId String?
     company   Company? @relation(fields: [companyId], references: [id])
     employee  Employee[]
+
+    @@map("users")
 }
 
 model Company {
@@ -72,6 +75,9 @@ model Company {
 
     employees Employee[]
     user     User[]
+    inviteCodes InviteCodes[]
+
+    @@map("companies")
 }
 
 model Employee {
@@ -83,6 +89,21 @@ model Employee {
 
     user     User     @relation(fields: [userId], references: [id])
     company  Company  @relation(fields: [companyId], references: [id])
+
+    @@map("employees")
 }
 
 
+model InviteCodes {
+    id      String   @id @default(uuid())
+    token      String   @unique
+    companyId String
+    expiryDate DateTime?
+    isExpired Boolean @default(false)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    company  Company  @relation(fields: [companyId], references: [id])
+
+    @@map("invite_codes")
+}
