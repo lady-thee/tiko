@@ -17,14 +17,38 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "migrate": "pnpx prisma migrate dev --schema=prisma/schema.prisma",
+    "generate": "pnpx prisma generate schema=prisma/schema.prisma",
+    "migrate:deploy": "pnpx prisma migrate deploy schema=prisma/schema.prisma",
+    "migrate:reset": "pnpx prisma migrate reset schema=prisma/schema.prisma",
+    "migrate:status": "pnpx prisma migrate status schema=prisma/schema.prisma",
+    "migrate:resolve": "pnpx prisma migrate resolve schema=prisma/schema.prisma",
+    "migrate:rollback": "pnpx prisma migrate rollback schema=prisma/schema.prisma",
+    "migrate:push": "pnpx prisma db push schema=prisma/schema.prisma"
   },
   "dependencies": {
+    "@hedger/nestjs-encryption": "^0.1.5",
     "@nestjs/common": "^11.0.1",
+    "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.1",
+    "@nestjs/jwt": "^11.0.0",
+    "@nestjs/passport": "^11.0.5",
     "@nestjs/platform-express": "^11.0.1",
+    "@nestjs/swagger": "^11.2.0",
+    "@prisma/client": "^6.7.0",
+    "argon2": "^0.43.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2",
+    "data-fns": "^1.1.0",
+    "date-fns": "^4.1.0",
+    "date-fns-tz": "^3.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
@@ -69,5 +93,13 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "argon2"
+    ],
+    "onlyBuiltDependencies": [
+      "argon2"
+    ]
   }
 }
